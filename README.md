@@ -72,5 +72,5 @@ to be rendered.
 
 List of Examples
 --------------
-[play2.0-form-example](../play2.0-form-example)
-[play2.0-ajax-examples](../play2.0-ajax-examples)
+* [play2.0-form-example](play2.0-form-example)
+* [play2.0-ajax-examples](play2.0-ajax-examples)
