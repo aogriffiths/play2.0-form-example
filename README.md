@@ -17,18 +17,20 @@ dull. The real purpose is to demostrate the code, which is well commented. Below
 overview of how it hangs together and you can click the links to read the comments inline
 with the code to find out more.
 
+The function of the app is to provided CRUD opperations for a model object called "Thing"
+
 Start by looking at [Application.java](play2.0-form-example/blob/master/app/controllers/Application.java).
 
 There are three write operations. These correspond to the POST requests.
-   * thingCreate()   - Create a new thing
-   * thingUpdate(id) - Update an existing thing
-   * thingDelete(id) - Delete an existing thing
+   * thingCreate()   - Create a new Thing
+   * thingUpdate(id) - Update an existing Thing
+   * thingDelete(id) - Delete an existing Thing
    
 There are four read operations. These correspond to the GET requests.
-   * thingList()   - GET a list of all things for viewing
-   * thingView(id) - GET a single thing for viewing 
-   * thingEdit(id) - GET a single thing for editing - POSTS to thingUpdate(id)
-   * thingNew(id)  - GET a new thing for creating   - POSTS to thingCreate()
+   * thingList()   - GET a list of all Things for viewing
+   * thingView(id) - GET a single Thing for viewing 
+   * thingEdit(id) - GET a single Thing for editing - POSTS to thingUpdate(id)
+   * thingNew(id)  - GET a new Thing for creating   - POSTS to thingCreate()
 
 The list, single and edit views can all POST to thingDelete(id)
 
@@ -67,3 +69,8 @@ Similarities to both View and Create.
 and creates an edit form from it. The Thing and the Form are sent to 
 [thingEdit.scala.html](play2.0-form-example/blob/master/app/views/thingView.scala.html) 
 to be rendered.
+
+List of Examples
+--------------
+[play2.0-form-example](../play2.0-form-example)
+[play2.0-ajax-examples](../play2.0-ajax-examples)
