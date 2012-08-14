@@ -1,4 +1,9 @@
-@(thing: Thing, thingForm: Form[Thing])
+@(thing: Thing)
+
+@********************************************************************************
+ * The most simple view of all, simply renders the thing object using standard play 
+ * templating. Includes a link to edit the thing. 
+ ********************************************************************************@
 
 @thingMain("View a Thing") {
 	  | <a href="@routes.Application.thingEdit(thing.id)">Edit</a> 

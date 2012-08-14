@@ -4,14 +4,18 @@ Forms Using Play 2.0
 Prerequisites
 ------------
 
-You will need to know a little java and how play 2.0 works. 
-There are comments in the code that should help. You will need play 2.0 and git 
+You will need to know a little java and how play 2.0 works. You will need play 2.0 and git 
 installed to run this example from your own machine.
 
 To run it, simply do a "git clone", cd to the project directory, then "play run".
 
 The Code
 --------
+
+The first thing to say is this app is not made to look good! The UI is  simple and 
+dull. The real purpose is to demostrate the code, which is well commented. Below is a quick
+overview of how it hangs together and you can click the links to read the comments inline
+with the code to find out more.
 
 Start by looking at [Application.java](play2.0-form-example/blob/master/app/controllers/Application.java).
 
@@ -45,10 +49,8 @@ to be renderd.
 Create
 ------
 
-[Application.thingNew()](play2.0-form-example/blob/master/app/controllers/Application.java) creates a new, 
-blank, Thing and an empty Form<Thing> for editing it. Technically the blank Thing object is 
-not needed, but would be useful if it contained useful default values, worth binding to the
-form. [thingNew.scala.html](play2.0-form-example/blob/master/app/views/thingNew.scala.html) renders the form.
+[Application.thingNew()](play2.0-form-example/blob/master/app/controllers/Application.java) creates an empty 
+Form<Thing> for creating a new Thing. [thingNew.scala.html](play2.0-form-example/blob/master/app/views/thingNew.scala.html) renders the form.
 
 View
 ----

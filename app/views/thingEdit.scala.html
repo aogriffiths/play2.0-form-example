@@ -1,10 +1,16 @@
 @(thing: Thing, thingForm: Form[Thing])
 
+@* NOTE this import is required to be able to use the @form tag below*@
 @import helper._
 
 @thingMain("Edit a Thing") {
     
+    @* The id is non-editable so rendered as text *@
     <p>id: @thing.id</p>
+    
+    @********************************************************************************
+     * Creates a basic form using the values from thingForm and submitting to thingUpdate
+     *********************************************************************************@
     @form(routes.Application.thingUpdate(thing.id)) {
     	 @inputText(thingForm("name")) 
      	 <input type="submit" value="Update">

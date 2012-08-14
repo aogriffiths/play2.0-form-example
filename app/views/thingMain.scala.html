@@ -1,9 +1,15 @@
 @(title: String)(content: Html)
 
+@********************************************************************************
+ * A template for all the thing views to share, provides consitent headings and a 
+ * main menu.
+ ********************************************************************************@
+
 @main(title) {
     
     <h1>Play 2.0 Form Example</h1>
     <h2>@title</h2>
+    <!-- main menu, shared by all thing pages -->
     <a href="@routes.Application.thingList()">List</a> | <a href="@routes.Application.thingNew()">Create</a>
     @content
 }

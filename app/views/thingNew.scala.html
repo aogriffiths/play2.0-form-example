@@ -1,12 +1,15 @@
-@(thing: Thing, thingForm: Form[Thing])
+@(thingForm: Form[Thing])
 
+@* NOTE this import is required to be able to use the @form tag below*@
 @import helper._
 
 @thingMain("New Thing") {
     
+    @********************************************************************************
+     * Creates a basic form using the values from thingForm and submitting to thingCreate
+     *********************************************************************************@
     @form(routes.Application.thingCreate()) {
     	 @inputText(thingForm("name")) 
      	 <input type="submit" value="Create">
 		}
-    <a href="@routes.Application.thingList()">Back to list</a> 
 }

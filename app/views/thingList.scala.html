@@ -1,15 +1,50 @@
 @(things: List[Thing])
+
+@* NOTE this import is required to be able to use the @form tags below*@
 @import helper._
 
+@********************************************************************************
+ * Crud: thingMain.scala.html provides links for the Create opperation
+ ********************************************************************************@
 @thingMain("Things List") {
     
     <ul>
     @for(thing <- things){
-    	<li>
-    		<a href="@routes.Application.thingView(thing.id)">@thing.name</a> 
+    	<li>    	  
+    	  @********************************************************************************
+    	   * cRud: here is the button for the Read (View) opperation, done as a form which 
+         * sends a GET request to the thingView method.
+         *********************************************************************************@
+        @form(routes.Application.thingView(thing.id), 'method -> "get", 'style -> "display: inline;") {
+          <input type="submit" value="View">
+        }   
+        
+        @********************************************************************************
+         * crUd: here is the button for the Update (Edit) opperation, done as a form which 
+         * sends a GET request to the thingEdit method.
+         *********************************************************************************@
+        @form(routes.Application.thingEdit(thing.id), 'method -> "get", 'style -> "display: inline;") {
+          <input type="submit" value="Edit">
+        }     
+
+        @********************************************************************************                  
+         * The View and Edit links could just as easily be done as a link 
+         * like like this:
+         * <a href="@routes.Application.thingEdit(thing.id)">Edit</a> 
+         * But we're using buttons for consistency with the delete operation.
+         *********************************************************************************@
+    		
+        @********************************************************************************                  
+    		 * cruD: here is the button for the Delete opperation, done as a form which 
+    		 * POSTS to the thingDelete method 
+         *********************************************************************************@
     		@form(routes.Application.thingDelete(thing.id), 'style -> "display: inline;") {
 			    <input type="submit" value="Delete">
 				}
+				
+				@* And finally the name of the Thing to display as text *@
+        @thing.name
+
 				</li>    	
     }
     </ul>
