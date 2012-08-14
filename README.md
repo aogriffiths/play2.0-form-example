@@ -13,7 +13,7 @@ To run it, simply do a "git clone", cd to the project directory, then "play run"
 The Code
 --------
 
-Start by looking at [Application.java](blob/master/app/controllers/Application.java).
+Start by looking at [Application.java](play2.0-form-example/blob/master/app/controllers/Application.java).
 
 There are three write operations. These correspond to the POST requests.
    * thingCreate()   - Create a new thing
@@ -29,39 +29,39 @@ There are four read operations. These correspond to the GET requests.
 The list, single and edit views can all POST to thingDelete(id)
 
 
-All of these java methods have http methods routed to them as per [routes](blob/master/conf/routes) (four are GET methods and one is a POST method).
+All of these java methods have http methods routed to them as per [routes](play2.0-form-example/blob/master/conf/routes) (four are GET methods and one is a POST method).
 
-The views are all in the standard [app/views](blob/master/app/views) package and correspond to the List, Edit, New and View methods.
+The views are all in the standard [app/views](play2.0-form-example/blob/master/app/views) package and correspond to the List, Edit, New and View methods.
 
 
 List
 ----
 
-The most simple case. [Application.thingList()](blob/master/app/controllers/Application.java) 
+The most simple case. [Application.thingList()](play2.0-form-example/blob/master/app/controllers/Application.java) 
 finds all the things in the dabase and sends them to the 
-[thingList.scala.html](blob/master/app/views/thingList.scala.html) template
+[thingList.scala.html](play2.0-form-example/blob/master/app/views/thingList.scala.html) template
 to be renderd.
 
 Create
 ------
 
-[Application.thingNew()](blob/master/app/controllers/Application.java) creates a new, 
+[Application.thingNew()](play2.0-form-example/blob/master/app/controllers/Application.java) creates a new, 
 blank, Thing and an empty Form<Thing> for editing it. Technically the blank Thing object is 
 not needed, but would be useful if it contained useful default values, worth binding to the
-form. [thingNew.scala.html](blob/master/app/views/thingnew.scala.html) renders the form.
+form. [thingNew.scala.html](play2.0-form-example/blob/master/app/views/thingnew.scala.html) renders the form.
 
 View
 ----
 
-Another simple one. [Application.thingView(id)](blob/master/app/controllers/Application.java)
+Another simple one. [Application.thingView(id)](play2.0-form-example/blob/master/app/controllers/Application.java)
 simply finds the Thing by id and sends it to 
-[thingView.scala.html](blob/master/app/views/thingView.scala.html) to be rendered.
+[thingView.scala.html](play2.0-form-example/blob/master/app/views/thingView.scala.html) to be rendered.
 
 Edit
 ----
 
 Similarities to both View and Create.
-[Application.thingEdit(id)](blob/master/app/controllers/Application.java) finds the Thing by id
-and creates an edit form from it. [thingEdit.scala.html](blob/master/app/views/thingView.scala.html) 
+[Application.thingEdit(id)](play2.0-form-example/blob/master/app/controllers/Application.java) finds the Thing by id
+and creates an edit form from it. [thingEdit.scala.html](play2.0-form-example/blob/master/app/views/thingView.scala.html) 
 renders the edit form.
 
