@@ -1,0 +1,7 @@
+@(thing: Thing, thingForm: Form[Thing])
+
+@thingMain("View a Thing") {
+	  | <a href="@routes.Application.thingEdit(thing.id)">Edit</a> 
+    <p>id: @thing.id</p>
+    <p>name: @thing.name</p>
+}

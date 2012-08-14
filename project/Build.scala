@@ -4,7 +4,7 @@ import PlayProject._
 
 object ApplicationBuild extends Build {
 
-    val appName         = "play2.0-ajax-examples"
+    val appName         = "play2.0-form-example"
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(

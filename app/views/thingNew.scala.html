@@ -1,0 +1,12 @@
+@(thing: Thing, thingForm: Form[Thing])
+
+@import helper._
+
+@thingMain("New Thing") {
+    
+    @form(routes.Application.thingCreate()) {
+    	 @inputText(thingForm("name")) 
+     	 <input type="submit" value="Create">
+		}
+    <a href="@routes.Application.thingList()">Back to list</a> 
+}

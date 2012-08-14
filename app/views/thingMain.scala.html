@@ -1,0 +1,9 @@
+@(title: String)(content: Html)
+
+@main(title) {
+    
+    <h1>Play 2.0 Form Example</h1>
+    <h2>@title</h2>
+    <a href="@routes.Application.thingList()">List</a> | <a href="@routes.Application.thingNew()">Create</a>
+    @content
+}

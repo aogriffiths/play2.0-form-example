@@ -1,5 +1,5 @@
-Javascript Remoting, AJAX and JSON Using Play 2.0
-=================================================
+Forms Using Play 2.0
+====================
 
 Prerequisites
 ------------
@@ -13,61 +13,55 @@ To run it, simply do a "git clone", cd to the project directory, then "play run"
 The Code
 --------
 
-It's a pretty simple play 2.0 app. Start by looking at [Application.java](/aogriffiths/play2.0-ajax-examples/blob/master/app/controllers/Application.java) 
-which defines four methods:
+Start by looking at [Application.java](blob/master/app/controllers/Application.java).
 
-* sayHello()
-* sayHelloToString(String name)
-* sayHelloToJson()
-* sayHelloWithJson(String name)
+There are three write operations. These correspond to the POST requests.
+   * thingCreate()   - Create a new thing
+   * thingUpdate(id) - Update an existing thing
+   * thingDelete(id) - Delete an existing thing
+   
+There are four read operations. These correspond to the GET requests.
+   * thingList()   - GET a list of all things for viewing
+   * thingView(id) - GET a single thing for viewing 
+   * thingEdit(id) - GET a single thing for editing - POSTS to thingUpdate(id)
+   * thingNew(id)  - GET a new thing for creating   - POSTS to thingCreate()
 
-Which are made available to be be called from client side javascript by the last method:
+The list, single and edit views can all POST to thingDelete(id)
 
-* javascriptRoutes()
 
-All five of these java methods have http methods routed to them as per [routes](/aogriffiths/play2.0-ajax-examples/blob/master/conf/routes) (four are GET methods and one is a POST method).
+All of these java methods have http methods routed to them as per [routes](blob/master/conf/routes) (four are GET methods and one is a POST method).
 
-They are called from the "index page" defined by 
-[index.scala.html](/aogriffiths/play2.0-ajax-examples/blob/master/app/views/index.scala.html). This file contains most of the javascript responsible for
-calling the methods above.
+The views are all in the standard [app/views](blob/master/app/views) package and correspond to the List, Edit, New and View methods.
 
-* **sayHello** is called as a simple GET request. 
-* **sayHelloToString** is called as a GET request with the name parameter in the query string.
-* **sayHelloToJson** is called as POST request with the parameters posted as JSON in the 
-request body. The response is sent back as JSON
-* **sayHelloWithJson** is called as a GET request and the responses is JSON.
 
-jsRoutes
---------
+List
+----
 
-For these methods to work seamlessly from the client side there one important 
-piece of glue, the "jsRoutes". The best way to understand this is to first 
-see the java method:
+The most simple case. [Application.thingList()](blob/master/app/controllers/Application.java) 
+finds all the things in the dabase and sends them to the 
+[thingList.scala.html](blob/master/app/views/thingList.scala.html) template
+to be renderd.
 
-    app.controllers.Application.javascriptRoutes()
+Create
+------
 
-Which builds a "routing" javascript, and is itself is routed to, by the line: (see [routes](/aogriffiths/play2.0-ajax-examples/blob/master/conf/routes)): 
+[Application.thingNew()](blob/master/app/controllers/Application.java) creates a new, 
+blank, Thing and an empty Form<Thing> for editing it. Technically the blank Thing object is 
+not needed, but would be useful if it contained useful default values, worth binding to the
+form. [thingNew.scala.html](blob/master/app/views/thingnew.scala.html) renders the form.
 
-    GET     /assets/javascripts/routes  controllers.Application.javascriptRoutes()
- 
-And called into the browser by the line: (see [main.scala.html](/aogriffiths/play2.0-ajax-examples/blob/master/app/views/main.scala.html)):
+View
+----
 
-    <script type="text/javascript" src="@routes.Application.javascriptRoutes"></script>
+Another simple one. [Application.thingView(id)](blob/master/app/controllers/Application.java)
+simply finds the Thing by id and sends it to 
+[thingView.scala.html](blob/master/app/views/thingView.scala.html) to be rendered.
 
-And then the javascript in [index.scala.html](/aogriffiths/play2.0-ajax-examples/blob/master/app/views/index.scala.html)
- can easily call the java in [Application.java](/aogriffiths/play2.0-ajax-examples/blob/master/app/controllers/Application.java)  with lines like 
+Edit
+----
 
-    jsRoutes.controllers.Application.sayHello()
+Similarities to both View and Create.
+[Application.thingEdit(id)](blob/master/app/controllers/Application.java) finds the Thing by id
+and creates an edit form from it. [thingEdit.scala.html](blob/master/app/views/thingView.scala.html) 
+renders the edit form.
 
-Summary
--------
-
-That's the highlights, hopefully you can get all details and nuances from
-the code. 
-
-[Application.java](/aogriffiths/play2.0-ajax-examples/blob/master/app/controllers/Application.java) and 
-[index.scala.html](/aogriffiths/play2.0-ajax-examples/blob/master/app/views/index.scala.html) 
-both contain comments. If you would like to understand more of what is going on under the 
-hood the comments in [Application.java](/aogriffiths/play2.0-ajax-examples/blob/master/app/controllers/Application.java) mention how to use cURL to play arround with it. And 
-[index.scala.html](/aogriffiths/play2.0-ajax-examples/blob/master/app/views/index.scala.html)
-includes debug statements  for your browser's javascript debug console. 

@@ -1,0 +1,12 @@
+@(thing: Thing, thingForm: Form[Thing])
+
+@import helper._
+
+@thingMain("Edit a Thing") {
+    
+    <p>id: @thing.id</p>
+    @form(routes.Application.thingUpdate(thing.id)) {
+    	 @inputText(thingForm("name")) 
+     	 <input type="submit" value="Update">
+		}
+}

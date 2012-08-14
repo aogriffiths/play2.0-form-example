@@ -6,14 +6,15 @@
 GET     /                           controllers.Application.index()
 
 #AJAX Methods
-GET     /say1                       controllers.Application.sayHello()
-GET     /say2                       controllers.Application.sayHelloToString(name: String)
-POST    /say3                       controllers.Application.sayHelloToJson()
-GET     /say4                       controllers.Application.sayHelloWithJson(name: String)
+POST    /thingCreate                controllers.Application.thingCreate()
 
-# Javascript routing 
-GET     /assets/javascripts/routes  controllers.Application.javascriptRoutes()
-
+GET     /thingList                  controllers.Application.thingList()
+GET     /thingNew 					controllers.Application.thingNew()
+GET     /thingView/:id 		   	    controllers.Application.thingView(id: Long)
+GET     /thingEdit/:id 				controllers.Application.thingEdit(id: Long)
+ 
+POST    /thingUpdate/:id            controllers.Application.thingUpdate(id: Long)
+POST    /thingDelete/:id            controllers.Application.thingDelete(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,16 @@
+@(things: List[Thing])
+@import helper._
+
+@thingMain("Things List") {
+    
+    <ul>
+    @for(thing <- things){
+    	<li>
+    		<a href="@routes.Application.thingView(thing.id)">@thing.name</a> 
+    		@form(routes.Application.thingDelete(thing.id), 'style -> "display: inline;") {
+			    <input type="submit" value="Delete">
+				}
+				</li>    	
+    }
+    </ul>
+}
